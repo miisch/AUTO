@@ -25,6 +25,25 @@ function randomMove () {
         wuKong.mecanumSpin(wuKong.TurnList.Right, 100)
     }
 }
+input.onButtonPressed(Button.A, function () {
+    for (let indexR = 0; indexR <= 255; indexR++) {
+        ledsColor(indexR, 255 - indexR, 0)
+    }
+    for (let indexG = 0; indexG <= 255; indexG++) {
+        ledsColor(255 - indexG, 0, indexG)
+    }
+    for (let indexB = 0; indexB <= 255; indexB++) {
+        ledsColor(0, indexB, 255 - indexB)
+    }
+})
+// basic.pause(5)
+function ledsColor (r: number, g: number, b: number) {
+    ring.setPixelColor(0, neopixel.rgb(r, g, b))
+    ring.setPixelColor(1, neopixel.rgb(r, g, b))
+    ring.setPixelColor(2, neopixel.rgb(r, g, b))
+    ring.setPixelColor(3, neopixel.rgb(r, g, b))
+    ring.show()
+}
 function updateCarSpeed () {
     tmp = Math.round(pins.analogReadPin(AnalogPin.P1) / 10.22)
     if (tmp != carSpeed) {
@@ -55,6 +74,9 @@ let tmp = 0
 let randomMoveId = 0
 let carSpeed = 0
 let carAutonomnous = 0
+let ring: neopixel.Strip = null
+ring = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+ring.clear()
 basic.showIcon(IconNames.Happy)
 music.playMelody("C D E F - - - - ", 283)
 wuKong.mecanumWheel(
