@@ -1,11 +1,13 @@
 {
-    "name": "auto",
+    "name": "AUTO WUKONG",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "wuKong": "github:elecfreaks/pxt-wukong#v1.4.7",
+        "pxt-sonar": "github:microsoft/pxt-sonar#v0.0.5"
     },
     "files": [
         "README.md",
